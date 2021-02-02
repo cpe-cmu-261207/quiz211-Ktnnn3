@@ -1,4 +1,22 @@
+import { Component } from "react";
+import Comp from "./Comp";
+import { useState } from "react";
+
 function App() {
+  const [counter, setCounter] = useState(620610772);
+
+  const addCounter = () => {
+    setCounter(counter + 1);
+  };
+
+  const deleteCounter = () => {
+    if (counter > 0) setCounter(counter - 1);
+  };
+
+  const resetCounter = () => {
+    setCounter(620610772);
+  };
+
   const persons = [
     {
       name: "Bob",
@@ -9,34 +27,22 @@ function App() {
       name: "Alice",
       gender: "male",
       age: "20"
+    },
+    {
+      name: "Kittinun",
+      gender: "female",
+      age: "20"
     }
   ];
   return (
-    <div class="ml-2">
-      <h3 class="title is-3">Person List</h3>
+    <div>
+      <Comp persons={persons} />
 
-      {/* Convert me to a component! */}
-      <table class="table is-bordered mb-3">
-        <tbody>
-          <tr>
-            <th>Name</th>
-            <th>Gender</th>
-            <th>Age</th>
-          </tr>
-          <tr>
-            <td>Bob</td>
-            <td>male</td>
-            <td>50</td>
-          </tr>
-        </tbody>
-      </table>
-
-      {/* Code me please! */}
       <h3 class="title is-3">ID Counter</h3>
       <p>YOUR ID HERE</p>
-      <button>-</button>
-      <button>reset</button>
-      <button>+</button>
+      <button onClick={deleteCounter}>-</button>
+      <button onClick={resetCounter}>reset</button>
+      <button onClick={addCounter}>+</button>
     </div>
   );
 }
